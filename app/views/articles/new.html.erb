@@ -1,0 +1,57 @@
+
+# With our validations in place, let's modify app/views/articles/new.html.erb to display any error messages for title and body:
+
+
+<h1>New Article</h1>
+
+<%= render "form", article: @article %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %><br>
+    <% @article.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+# <h1>New Article</h1>
+
+# <%= form_with model: @article do |form| %>
+#   <div>
+#     <%= form.label :title %><br>
+#     <%= form.text_field :title %>
+#   </div>
+
+#   <div>
+#     <%= form.label :body %><br>
+#     <%= form.text_area :body %>
+#   </div>
+
+#   <div>
+#     <%= form.submit %>
+#   </div>
+# <% end %>
